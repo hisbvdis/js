@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="main.css" rel="stylesheet"/>
+  <script src="main.js" defer></script>
+  <title>Копирование текста в буфер обмена</title>
+</head>
+<body>
+
+<!-- ПРИМЕР №1: Текстовое поле с кнопкой копирования в буфер его текста -->
+<div class="field">
+  <input class="js-textField" type="text" value="Какой-то текст в поле">
+  <button class="js-copyFieldTextBtn">Копировать текст поля</button>
+</div>
+
+
+<!-- ПРИМЕР №2: Кнопка "button", копирующая в буфер своё название -->
+<div class="field">
+  <button class="js-copyOwnNameBtn">Копировать название кнопки</button>
+</div>
+
+
+<!-- ПРИМЕР №3: Текстовое поле с кнопкой копирования ВЫДЕЛЕННОГО ТЕКСТА -->
+<div class="field">
+  <input class="js-textField" type="text" value="Какой-то текст в поле">
+  <button class="js-copySelectedTextBtn">Копировать выделенный фрагмент</button>
+</div>
+  
+</body>
+</html>

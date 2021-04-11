@@ -1,0 +1,23 @@
+.srOnly {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+.field {
+  padding: 20px;
+  margin-block-end: 50px;
+  
+  background: lightgoldenrodyellow;
+  border: 1px solid coral;
+}
