@@ -30,4 +30,4 @@
 3. Отслеживание загрузки ответа                    ([Файлы](fetch/3response-download-tracking) / [Демо](https://hisbvdis.github.io/my-samples-js/fetch/3response-download-tracking/index.html))
 
 *Разное*
-1. Копирование текста в буфер обмена               ([Файлы](other/copy-to-clipboard) /           [Демо](https://hisbvdis.github.io/my-samples-js/other/copy-to-clipboard/index.html))
+1. Копирование текста в буфер обмена               ([Файлы](other/copy-to-clipboard) /           [Демо](https://hisbvdis.github.io/my-samples-js/other/copy-to-clipboard/index.html))-m 
