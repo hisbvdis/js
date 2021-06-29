@@ -15,7 +15,7 @@ export function randomInt(min, max) {
 
 // Вариант №2:
 // Источник: https://learn.javascript.ru/task/random-int-min-max
-function randomInt2(min, max) {
+export function randomInt_2(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
 
@@ -26,21 +26,6 @@ function randomInt2(min, max) {
 // =============================================================================
 // Произвольное дробное из заданного диапазона
 // =============================================================================
-function randomFloat(min, max) {
+export function randomFloat(min, max) {
 	return Math.random() * (max - min) + min;
-}
-
-
-// =============================================================================
-// Произвольный массив чисел из заданного диапазона
-// =============================================================================
-function getRandomArray(min, max) {
-  let iterations = randomInt(min, max)
-  let resultSet = new Set();
-
-  for (let i = 0; i < iterations; i++) {
-    resultSet.add( randomInt(min, max) );
-  }
-
-  return [...resultSet];
 }
