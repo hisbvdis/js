@@ -54,7 +54,7 @@ console.log(sumSalaries(company));
 // Функция рекурсивного обхода объекта
 function sumSalaries(depart) {
   if (Array.isArray(depart)) {
-    return depart.reduce((result, employee) => result += employee.salary, 0); 
+    return depart.reduce((result, employee) => result += employee.salary, 0);
   } 
   else {
     let subDeparts = Object.values(depart);

@@ -1,4 +1,3 @@
-"
 console.log( sumTo(-1) );
 console.log( sumTo(0) );
 console.log( sumTo(5) );
