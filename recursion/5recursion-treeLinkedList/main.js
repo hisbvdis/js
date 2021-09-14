@@ -1,4 +1,3 @@
-"
 let list = {
   value: 1,
   next: {
@@ -15,7 +14,11 @@ let list = {
 
 console.log( printList(list) );
 
+
 function printList(item) {
-  console.log( item.value );
-  if (item.next) printList(item.next);
+  if (item.next === null) {
+    return [item.value];
+  } else {
+    return printList(item.next).concat(item.value);
+  }
 }
