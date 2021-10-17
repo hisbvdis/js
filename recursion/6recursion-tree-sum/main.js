@@ -51,13 +51,32 @@ let company = {
 console.log(sumSalaries(company));
 
 
-// Функция рекурсивного обхода объекта
+// Функция рекурсивного обхода объекта (краткая)
 function sumSalaries(depart) {
   if (Array.isArray(depart)) {
-    return depart.reduce((result, employee) => result += employee.salary, 0);
+    return depart.reduce((sum, employee) => sum += employee.salary, 0);
   } 
   else {
     let subDeparts = Object.values(depart);
     return subDeparts.reduce((result, subDeparts) => result += sumSalaries(subDeparts), 0);
   }
+}
+
+
+
+// Функция рекурсивного обхода объекта (подробная)
+function sumSalaries(depart) {
+  let sum = 0;
+  
+  if (Array.isArray(depart)) {
+    return depart.reduce((result, employee) => result += employee.salary, 0);
+  } 
+  
+  else {
+    for (let subDepart of Object.values(depart)) {
+      sum += sumSalaries(subDepart);
+    }
+  }
+
+  return sum;
 }

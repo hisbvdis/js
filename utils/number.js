@@ -23,9 +23,26 @@ export function randomInt_2(min, max) {
 }
 
 
+// Вариант №3
+// Простая формула, но не точная
+export function randomInt_3(min, max) {
+  const rand = Math.random() * (max - min + 1);
+  return Math.floor(rand);
+}
+
+
 // =============================================================================
 // Произвольное дробное из заданного диапазона
 // =============================================================================
 export function randomFloat(min, max) {
 	return Math.random() * (max - min) + min;
+}
+
+
+// =============================================================================
+// Среднее арифметическое из массива чисел
+// =============================================================================
+// Источник: https://stackoverflow.com/a/52139743/4956416
+export function arithmeticMean(array) {
+  return array.reduce((avg, value, _, array) => {avg + value / array.length}, 0);
 }
