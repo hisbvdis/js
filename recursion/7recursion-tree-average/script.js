@@ -20,30 +20,35 @@ const tree =
 console.log( average(tree) );
 
 
-function average(tree) {
-  // 1. Простейший случай — если нет дочерних узлов (то есть, дочернее свойство "children" — это пустой массив длиной = 0)
-  if (tree.children.length === 0) {
-    // 1.1. Вернуть среднее арифметическое из значений текущего узла (если значений нет, вернёт 0)
-    return tree.values.reduce((avg, value, index, array) => avg + value / array.length, 0);
-  } 
-  // 2. Другие случаи (если есть дочерние узлы)
-  else {
-    // 2.1. Среднее арифметическое из значений текущего узла
-    const currAvg = tree.values.reduce((avg, value, index, array) => avg + value / array.length, 0)
-    
-    // 2.2. Среднее арифметическое из значений дочерних узлов
-    const childAvg = tree.children
-      // 2.2.1. Для каждого дочернего узла вызвать функцию
-      .map(child => average(child))
-      // 2.2.2. Оставить значения, не равные нулю
-      .filter(value => value !== 0)
-      // 2.2.3. Посчитать среднее арифметическое из оставшихся значений
-      .reduce((avg, value, index, array) => avg + value / array.length, 0)
+const average = graph => {
+  const values = inner(graph);
+  const avg = values.reduce((avg, value, index, array) => avg + value / array.length, 0);
+  return avg;
 
-    // 2.3. Среднее арифметическое из средних значений текущего и дочерних узлов
-    const result = [currAvg, childAvg]
-      .reduce((avg, value, index, array) => avg + value / array.length, 0);
+  function inner(graph) {
+    // 1. Простейший случай
+    if (graph.children.length === 0) {
+      return graph.values;
+    } 
+    // 2. Другие случаи
+    else {
+      // 2.1. Массив значений "values" текущего узла
+      const currentNodeValues = graph.values;
 
-    return result;
+      // 2.2. Массив значений "values" дочерних узлов
+      const childNodesValues = graph.children
+        .map(child => inner(child))
+        .filter(value => value !== undefined)
+        .reduce((accum, child) => [...accum, ...child], [])
+      // console.log( childNodesValues );
+
+      // 2.3. Массив значений текущего и дочерних узлов
+      const totalValues = [...currentNodeValues, ...childNodesValues]
+
+      // 2.4. Среднее арифметическое из итогового массива
+      // const avg = totalValues.reduce((avg, value, _, array) => avg + value / array.length, 0);
+
+      return totalValues;
+    }
   }
 }

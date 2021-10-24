@@ -1,5 +1,3 @@
-"use strict";
-
 function makeCounter() {
 
   function counter() {
