@@ -183,7 +183,7 @@ export class List {
       return;
     }
 
-    if (index === this.length) {
+    if (index > this.length - 1) {
       this.append(value);
       return;
     }
