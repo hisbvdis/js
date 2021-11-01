@@ -25,32 +25,34 @@ export class SinglyLinkedList {
 
 
   // ===================================================================
-  // Добавить узел в конец списка
+  // Добавить узлы в конец списка
   // ===================================================================
-  append(value) {
-    // 1. Создать экземпляр узла
-    let newNode = new SinglyLinkedListItem(value);
+  append(...values) {
+    values.forEach(item => {
+      // 1. Создать экземпляр узла
+      let newNode = new SinglyLinkedListItem(item);
 
-    // 2. Если список пустой
-    if (this.head === null) {
-      // 2.1. Созданный узел сделать "головным"
-      this.head = newNode;
-    }
-    // 3. Иначе (если список не пустой)
-    else {
-      // 3.1. Головной объект сделать текущим
-      let currentNode = this.head;
-      // 3.2. Пока у текущего узла есть ссылка на следующий узел...
-      while (currentNode.next !== null) {
-        // 3.3. Делать следующий узел текущим (так дойдёт до последнего узла)
-        currentNode = currentNode.next
+      // 2. Если список пустой
+      if (this.head === null) {
+        // 2.1. Созданный узел сделать "головным"
+        this.head = newNode;
       }
-      // 3.4. Когда "текущий" узел дойдёт до последнего, добавить ещё один узел
-      currentNode.next = newNode
-    }
+      // 3. Иначе (если список не пустой)
+      else {
+        // 3.1. Головной объект сделать текущим
+        let currentNode = this.head;
+        // 3.2. Пока у текущего узла есть ссылка на следующий узел...
+        while (currentNode.next !== null) {
+          // 3.3. Делать следующий узел текущим (так дойдёт до последнего узла)
+          currentNode = currentNode.next
+        }
+        // 3.4. Когда "текущий" узел дойдёт до последнего, добавить ещё один узел
+        currentNode.next = newNode
+      }
 
-    // 4. Увеличить длину списка на 1
-    this.length++;
+      // 4. Увеличить длину списка на 1
+      this.length++;
+    });
   }
 
 
@@ -186,6 +188,18 @@ export class SinglyLinkedList {
   insert(index, value) {
     // 1. Создать новый узел
     const newNode = new SinglyLinkedListItem(value);
+
+    // 1. Если список пустой, добавить элемент в конец (append)
+    if (this.head === null) {
+      this.append(value);
+      return;
+    }
+
+    // 1. Если нужно добавить на первое место, использовать "prepend"
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
     
     // 2."Головной" узел сделать текущим (с него будет начинаться перебор)
     let currentNode = this.head;
@@ -243,6 +257,11 @@ export class SinglyLinkedList {
   // Удалить узел с заданным индексом
   // ===================================================================
   remove(index) {
+    // 4. Иначе
+    let prevNode = null;
+    let currentNode = this.head;
+    let deletedNode = null;
+
     // 1. Если список пустой, нечего удалять
     if (this.head === null) return undefined;
 
@@ -250,14 +269,15 @@ export class SinglyLinkedList {
     if (index < 0 || index >= this.length) return undefined;
 
     // 3. Если в списке один элемент, значит это "головной" и его удалить
-    if (this.length === 1) this.head = null;
+    if (this.length === 1) {
+      deletedNode = this.head;
+      this.head = null;
+      this.length--;
+      return deletedNode.value;
+    }
 
-    // 4. Иначе
-    let prevNode = null;
-    let currentNode = this.head;
-    let deletedNode = null;
-    let count = 0;
     // 3. Пока очередной текущий узел существует (не равен "null")
+    let count = 0;
     while (currentNode !== null) {
       // 4.1. Если удаляется первый узел, после которого нет узла
       if (count === index && count === 0 && currentNode.next === null) {
@@ -417,3 +437,7 @@ export class SinglyLinkedList {
     }
   }
 }
+
+const list = new SinglyLinkedList();
+list.append(1)
+console.log( list.toArray() );
