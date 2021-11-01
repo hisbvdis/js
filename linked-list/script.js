@@ -1,11 +1,11 @@
-class Node {
+class SinglyLinkedListItem {
   constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
 
-class List {
+export class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.length = 0;
@@ -23,17 +23,13 @@ class List {
     }
   }
 
-  get head() {
-    return this.head;
-  }
-
 
   // ===================================================================
   // Добавить узел в конец списка
   // ===================================================================
   append(value) {
     // 1. Создать экземпляр узла
-    let newNode = new Node(value);
+    let newNode = new SinglyLinkedListItem(value);
 
     // 2. Если список пустой
     if (this.head === null) {
@@ -189,7 +185,7 @@ class List {
   // ===================================================================
   insert(index, value) {
     // 1. Создать новый узел
-    const newNode = new Node(value);
+    const newNode = new SinglyLinkedListItem(value);
     
     // 2."Головной" узел сделать текущим (с него будет начинаться перебор)
     let currentNode = this.head;
@@ -227,7 +223,7 @@ class List {
   // ===================================================================
   prepend(value) {
     // 1. Создать новый узел
-    const newNode = new Node(value);
+    const newNode = new SinglyLinkedListItem(value);
 
     // 2. Новому узлу задать ссылку на текущий "головной" элемент
     newNode.next = this.head;
@@ -403,4 +399,21 @@ class List {
   // ===================================================================
   // Итерирование
   // ===================================================================
+  [Symbol.iterator]() {
+    const entries = this.toArray();
+    let index = 0;
+
+    return {
+      next() {
+        const result = {
+          value: entries[index],
+          done: index >= entries.length
+        };
+
+        index++;
+
+        return result;
+      }
+    }
+  }
 }
