@@ -155,34 +155,6 @@ export class SinglyLinkedList {
 
 
   // ===================================================================
-  // Найти узел с указанным значением и вернуть индекс
-  // ===================================================================
-  indexOf(value) {
-    // 1. Если список пустой, нечего искать, поэтому вернуть "false"
-    if (this.head === null) return false;
-
-    // 2. Если список не пустой
-    // 2.1. "Головной" узел сделать текущим (с него будет начинаться перебор)
-    let currentNode = this.head;
-    // 2.2. Счётчик узлов. Начальное значение
-    let count = 0;
-
-    // 3. Пока текущий узел существует (не равен "null")
-    while (currentNode !== null) {
-      // 3.1. Если текущий узел имеет искомое значение, вернуть индекс
-      if (currentNode.value === value) return count;
-
-      // 3.2. Если следующего узла нет, такого значения нет (вернуть "-1")
-      if (currentNode.next === null) return -1;
-
-      // 3.3. Иначе следующий узел сделать текущим
-      currentNode = currentNode.next;
-      count++;
-    }
-  }
-
-
-  // ===================================================================
   // Добавить узел в указанном месте
   // ===================================================================
   insert(index, value) {
@@ -407,24 +379,29 @@ export class SinglyLinkedList {
     if (this.isEmpty) {
       return [];
     }
-
     // Преобразовать в массив и отсортировать
-    const sortedArray = [...this.toArray()].sort(sortFunc);
+    const sortedArray = [...this.toArray()].sort();
     // Очистить список
     this.clear();
     // Добавить в список узлы с указанным значением
-    sortedArray.forEach(value => this.append(value));
+    this.append(...sortedArray)
+
+    return sortedArray;
   }
 
   // ===================================================================
   // Итерирование
   // ===================================================================
+  // Метод, делающий объект итерируемым
   [Symbol.iterator]() {
     const entries = this.toArray();
     let index = 0;
 
+    // Метод должен возвращать объект с методом "next()"
     return {
+      // Чтобы получить следующее значение, цикл "for..of" будет вызывать метод "next()"
       next() {
+        // Метод "next()" должен возвращать объект с двумя свойствами
         const result = {
           value: entries[index],
           done: index >= entries.length
@@ -437,7 +414,3 @@ export class SinglyLinkedList {
     }
   }
 }
-
-const list = new SinglyLinkedList();
-list.append(1)
-console.log( list.toArray() );
