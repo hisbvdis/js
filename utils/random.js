@@ -52,10 +52,11 @@ export function randomArrayFromArray(inputArr) {
 export function randomBool() {
   // Произвольное 0 или 1
   const randomInteger = randomInt(0, 1)
-  // Преобразовать числов в Boolean (0 - false, 1 - true)
+  // Преобразовать число в Boolean (0 - false, 1 - true)
   const boolean = Boolean(randomInteger);
   // Вернуть Boolean
   return boolean;
+
 
   // Вспомогательная функция для произвольного числа
   function randomInt(min, max) {
