@@ -1,0 +1,9 @@
+:valid {
+  outline-color: greenyellow;
+  border: 2px solid greenyellow;
+}
+
+:invalid {
+  outline-color: red;
+  border: 2px solid red;
+}
