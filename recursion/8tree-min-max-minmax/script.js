@@ -28,6 +28,7 @@ function min(graph) {
     // 1.1. Вернуть минимальное значение текущего узла (если значений нет, вернёт 0)
     return Math.min(...graph.values);
   }
+  
   // 2. Другие случаи (если есть дочерние узлы)
   else {
     // 2.1. Минимальное значение текущего узла
@@ -69,11 +70,11 @@ function max(graph) {
 
 
 function minmax(graph) {
-  // 1. Простейший случай (нет дочерних узлов и значений)
+  // 1. Простейший случай
   if (graph.children.length === 0 && graph.values.length === 0) {
     return 0;
   } 
-  // 2. Простейший случай (нет дочерних узлов, но есть значения)
+  // 2. Простейший случай
   else if (graph.children.length === 0 && graph.values.length > 0) {
     return {
       min: Math.min(...graph.values),
