@@ -8,7 +8,7 @@
  */
 
 const leafs = tree => {
-  // Простейший случай
+  // Простой случай
   if ("children" in tree === false) {
     return 1;
   }
