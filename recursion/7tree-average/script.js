@@ -34,7 +34,7 @@ function averageValue(graph) {
   // Рекурсивная функция сбора всех значений дерева
   const collectValues = (graph) => {
     // 1. Простой случай
-    // 1.1. Если длина массива в свойстве "children" === 0
+    // 1.1. Если дочерних узлов нет (длина массива в свойстве "children" === 0)
     if (graph.children.length === 0) {
       // 1.2. Вернуть массив значений текуущего узла
       return graph.values;

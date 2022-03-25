@@ -1,56 +1,60 @@
 [
   {
     "index": 0,
-    "text": "What is your marital status?",
+    "text": "Question0",
     "answers": [
       {
-        "answer": "Single",
+        "answer": "Answer1",
+        "next": null
+      },
+      {
+        "answer": "Answer1",
         "next": 1
       },
       {
-        "answer": "Married",
+        "answer": "Answer1",
         "next": 2
       }
     ]
   },
   {
     "index": 1,
-    "text": "Are you planning on getting married next year?",
+    "text": "Question1",
     "answers": [
       {
-        "answer": "Yes",
-        "next": null
+        "answer": "Answer0",
+        "next": 2
       },
       {
-        "answer": "No",
-        "next": null
+        "answer": "Answer0",
+        "next": 3
       }
     ]
   }, 
   {
     "index": 2,
-    "text": "How long have you been married?",
+    "text": "Question2",
     "answers": [
       {
-        "answer": "Less than a year",
+        "answer": "Answer0",
         "next": null
       },
       {
-        "answer": "More than a year",
+        "answer": "Answer1",
         "next": 3
       }
     ]
   },
   {
     "index": 3,
-    "text": "Have you celebrated your one year anniversary?",
+    "text": "Question3",
     "answers": [
       {
-        "answer": "Yes",
+        "answer": "Answer0",
         "next": null
       },
       {
-        "answer": "No",
+        "answer": "Answer1",
         "next": null
       }
     ]
