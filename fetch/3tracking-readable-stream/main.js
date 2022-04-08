@@ -1,5 +1,3 @@
-"use strict";
-
 // ПРИМЕР: Отслеживание загрузки тела ответа при fetch-запросе
 // ИСТОЧНИК: https://learn.javascript.ru/fetch-progress
 
